@@ -60,6 +60,36 @@ describe("Round seconds", () => {
   });
 });
 
+describe("Round milliseconds", () => {
+  const millisecondsLow = new Date(2020, 0, 1, 0, 0, 0, 249);
+  const millisecondsHigh = new Date(2020, 0, 1, 0, 0, 0, 250);
+
+  it("should round milliseconds up", () => {
+    const rounded = round.millisecondsUp(millisecondsLow, 500);
+    const target = new Date(2020, 0, 1, 0, 0, 0, 500);
+
+    expect(rounded.getTime()).toBe(target.getTime());
+  });
+
+  it("should round milliseconds down", () => {
+    const rounded = round.millisecondsDown(millisecondsHigh, 500);
+    const target = new Date(2020, 0, 1, 0, 0, 0, 0);
+
+    expect(rounded.getTime()).toBe(target.getTime());
+  });
+
+  it("should round milliseconds to nearest", () => {
+    const roundedLow = round.millisecondsNearest(millisecondsLow, 500);
+    const targetLow = new Date(2020, 0, 1, 0, 0, 0, 0);
+
+    const roundedHigh = round.millisecondsNearest(millisecondsHigh, 500);
+    const targetHigh = new Date(2020, 0, 1, 0, 0, 0, 500);
+
+    expect(roundedLow.getTime()).toBe(targetLow.getTime());
+    expect(roundedHigh.getTime()).toBe(targetHigh.getTime());
+  });
+});
+
 describe("validate increment", () => {
   it("should throw error with invalid increment", () => {
     expect(() => round.minutesNearest(new Date(), 13)).toThrow();

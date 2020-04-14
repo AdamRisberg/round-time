@@ -21,23 +21,23 @@ describe("toMilliseconds", () => {
 
 describe("validateIncrement", () => {
   it("should return true on valid increments", () => {
-    const validHours = roundTime.validateIncrement(12, TIME_UNITS.HOURS);
     const validMinutes = roundTime.validateIncrement(15, TIME_UNITS.MINUTES);
     const validSeconds = roundTime.validateIncrement(15, TIME_UNITS.SECONDS);
+    const validMilliseconds = roundTime.validateIncrement(100, TIME_UNITS.MILLISECONDS);
 
-    expect(validHours).toBe(true);
     expect(validMinutes).toBe(true);
     expect(validSeconds).toBe(true);
+    expect(validMilliseconds).toBe(true);
   });
 
   it("should return false on invalid increments", () => {
-    const validHours = roundTime.validateIncrement(13, TIME_UNITS.HOURS);
     const validMinutes = roundTime.validateIncrement(14, TIME_UNITS.MINUTES);
     const validSeconds = roundTime.validateIncrement(14, TIME_UNITS.SECONDS);
+    const validMilliseconds = roundTime.validateIncrement(13, TIME_UNITS.MILLISECONDS);
 
-    expect(validHours).toBe(false);
     expect(validMinutes).toBe(false);
     expect(validSeconds).toBe(false);
+    expect(validMilliseconds).toBe(false);
   });
 
   it("should throw error on invalid time unit", () => {

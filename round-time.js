@@ -48,8 +48,8 @@ function validateIncrement(increment, unit) {
     case TIME_UNITS.MINUTES:
     case TIME_UNITS.SECONDS:
       return 60 % increment === 0;
-    case TIME_UNITS.HOURS:
-      return 24 % increment === 0;
+    case TIME_UNITS.MILLISECONDS:
+      return 1000 % increment === 0;
     default:
       throw new Error(`Invalid time unit: ${unit}`);
   }
