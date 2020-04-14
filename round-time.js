@@ -81,13 +81,11 @@ function roundToNearest(timeInMs, incrementInMs) {
 
 function toMilliseconds(time, unit) {
   switch (unit) {
-    case "days":
-      return toMilliseconds(time * 24, "hours");
-    case "hours":
-      return toMilliseconds(time * 60, "minutes");
-    case "minutes":
-      return toMilliseconds(time * 60, "seconds");
-    case "seconds":
+    case TIME_UNITS.HOURS:
+      return toMilliseconds(time * 60, TIME_UNITS.MINUTES);
+    case TIME_UNITS.MINUTES:
+      return toMilliseconds(time * 60, TIME_UNITS.SECONDS);
+    case TIME_UNITS.SECONDS:
       return time * 1000;
     default:
       return time;
