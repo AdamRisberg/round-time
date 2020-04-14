@@ -1,5 +1,4 @@
 const TIME_UNITS = {
-  HOURS: "hours",
   MINUTES: "minutes",
   SECONDS: "seconds",
   MILLISECONDS: "milliseconds",
@@ -81,8 +80,6 @@ function roundToNearest(timeInMs, incrementInMs) {
 
 function toMilliseconds(time, unit) {
   switch (unit) {
-    case TIME_UNITS.HOURS:
-      return toMilliseconds(time * 60, TIME_UNITS.MINUTES);
     case TIME_UNITS.MINUTES:
       return toMilliseconds(time * 60, TIME_UNITS.SECONDS);
     case TIME_UNITS.SECONDS:
