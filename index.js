@@ -1,4 +1,4 @@
-const roundDate = require("./roundDate");
+const roundDate = require("./round-time");
 const { createRoundingFunc, TIME_UNITS, MODE } = roundDate;
 
 module.exports = {
