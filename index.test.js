@@ -1,4 +1,4 @@
-const round = require("./index");
+import round from "./index";
 
 describe("Round minutes", () => {
   const minutesLow = new Date(2020, 0, 1, 0, 7, 29);

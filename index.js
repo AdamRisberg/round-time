@@ -1,7 +1,6 @@
-const roundDate = require("./round-time");
-const { createRoundingFunc, TIME_UNITS, MODE } = roundDate;
+import { createRoundingFunc, TIME_UNITS, MODE } from "./round-time";
 
-module.exports = {
+export default {
   minutesUp: createRoundingFunc(TIME_UNITS.MINUTES, MODE.UP),
   minutesDown: createRoundingFunc(TIME_UNITS.MINUTES, MODE.DOWN),
   minutesNearest: createRoundingFunc(TIME_UNITS.MINUTES, MODE.NEAREST),
@@ -10,5 +9,8 @@ module.exports = {
   secondsNearest: createRoundingFunc(TIME_UNITS.SECONDS, MODE.NEAREST),
   millisecondsUp: createRoundingFunc(TIME_UNITS.MILLISECONDS, MODE.UP),
   millisecondsDown: createRoundingFunc(TIME_UNITS.MILLISECONDS, MODE.DOWN),
-  millisecondsNearest: createRoundingFunc(TIME_UNITS.MILLISECONDS, MODE.NEAREST)
+  millisecondsNearest: createRoundingFunc(
+    TIME_UNITS.MILLISECONDS,
+    MODE.NEAREST
+  ),
 };

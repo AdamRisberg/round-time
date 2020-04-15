@@ -1,22 +1,22 @@
-const TIME_UNITS = {
+export const TIME_UNITS = {
   MINUTES: "minutes",
   SECONDS: "seconds",
   MILLISECONDS: "milliseconds",
 };
 
-const MODE = {
+export const MODE = {
   UP: "up",
   DOWN: "down",
   NEAREST: "nearest",
 };
 
-function createRoundingFunc(unit, mode) {
+export function createRoundingFunc(unit, mode) {
   return function (date, increment = 1) {
     return round(date, increment, unit, mode);
   };
 }
 
-function round(date, increment, unit, mode) {
+export function round(date, increment, unit, mode) {
   if (!validateIncrement(increment, unit)) {
     throw new Error("Invalid rounding increment.");
   }
@@ -43,7 +43,7 @@ function round(date, increment, unit, mode) {
   return new Date(roundedTime);
 }
 
-function validateIncrement(increment, unit) {
+export function validateIncrement(increment, unit) {
   switch (unit) {
     case TIME_UNITS.MINUTES:
     case TIME_UNITS.SECONDS:
@@ -55,15 +55,15 @@ function validateIncrement(increment, unit) {
   }
 }
 
-function floorTo(timeInMs, incrementInMs) {
+export function floorTo(timeInMs, incrementInMs) {
   return Math.floor(timeInMs / incrementInMs) * incrementInMs;
 }
 
-function ceilTo(timeInMs, incrementInMs) {
+export function ceilTo(timeInMs, incrementInMs) {
   return floorTo(timeInMs, incrementInMs) + incrementInMs;
 }
 
-function roundToNearest(timeInMs, incrementInMs) {
+export function roundToNearest(timeInMs, incrementInMs) {
   const mid = incrementInMs / 2;
 
   const remainder = timeInMs % incrementInMs;
@@ -78,7 +78,7 @@ function roundToNearest(timeInMs, incrementInMs) {
   return rounded;
 }
 
-function toMilliseconds(time, unit) {
+export function toMilliseconds(time, unit) {
   switch (unit) {
     case TIME_UNITS.MINUTES:
       return toMilliseconds(time * 60, TIME_UNITS.SECONDS);
@@ -88,15 +88,3 @@ function toMilliseconds(time, unit) {
       return time;
   }
 }
-
-module.exports = {
-  createRoundingFunc,
-  round,
-  validateIncrement,
-  floorTo,
-  ceilTo,
-  roundToNearest,
-  toMilliseconds,
-  TIME_UNITS,
-  MODE,
-};
