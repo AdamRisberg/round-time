@@ -112,9 +112,20 @@ describe("default increment", () => {
   const secondsTest = new Date(2020, 0, 1, 0, 0, 7, 499);
   const target = new Date(2020, 0, 1, 0, 0, 7);
 
-  const rounded = round.secondsNearest(secondsTest);
-
   it("should use default value of 1 for increment when none is provided", () => {
+    const rounded = round.secondsNearest(secondsTest);
+
+    expect(rounded.getTime()).toBe(target.getTime());
+  });
+});
+
+describe("floating point increments", () => {
+  const secondsTest = new Date(2020, 0, 1, 0, 0, 7, 120);
+  const target = new Date(2020, 0, 1, 0, 0, 7, 500);
+
+  it("should accept floating point increments", () => {
+    const rounded = round.secondsUp(secondsTest, 7.5);
+
     expect(rounded.getTime()).toBe(target.getTime());
   });
 });
