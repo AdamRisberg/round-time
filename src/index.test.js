@@ -92,7 +92,19 @@ describe("Round milliseconds", () => {
 
 describe("validate increment", () => {
   it("should throw error with invalid increment", () => {
-    expect(() => round.minutesNearest(new Date(), 13)).toThrow();
+    const testDate = new Date();
+    const minutesMessage =
+      "13 is an invalid rounding increment. Increments of minutes must be a factor of 60.";
+    const secondsMessage =
+      "13 is an invalid rounding increment. Increments of seconds must be a factor of 60.";
+    const millisecondsMessage =
+      "13 is an invalid rounding increment. Increments of milliseconds must be a factor of 1000.";
+
+    expect(() => round.minutesNearest(testDate, 13)).toThrow(minutesMessage);
+    expect(() => round.secondsNearest(testDate, 13)).toThrow(secondsMessage);
+    expect(() => round.millisecondsNearest(testDate, 13)).toThrow(
+      millisecondsMessage
+    );
   });
 });
 

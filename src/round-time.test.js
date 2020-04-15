@@ -48,7 +48,9 @@ describe("validateIncrement", () => {
   });
 
   it("should throw error on invalid time unit", () => {
-    expect(() => validateIncrement(10, "nothing")).toThrow();
+    expect(() => validateIncrement(10, "nothing")).toThrow(
+      "Invalid unit of time: nothing"
+    );
   });
 });
 
@@ -73,8 +75,8 @@ describe("roundToNearest", () => {
 
 describe("round", () => {
   it("should throw error on invalid rounding mode", () => {
-    expect(() =>
-      round(new Date(), 30, TIME_UNITS.SECONDS, "nothing")
-    ).toThrow();
+    expect(() => round(new Date(), 30, TIME_UNITS.SECONDS, "nothing")).toThrow(
+      "Invalid rounding mode: nothing"
+    );
   });
 });

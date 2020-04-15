@@ -18,7 +18,7 @@ export function createRoundingFunc(unit, mode) {
 
 export function round(date, increment, unit, mode) {
   if (!validateIncrement(increment, unit)) {
-    throw new Error("Invalid rounding increment.");
+    throw new Error(getIncrementErrorMessage(unit, increment));
   }
 
   const timeInMs = date.getTime();
@@ -51,8 +51,20 @@ export function validateIncrement(increment, unit) {
     case TIME_UNITS.MILLISECONDS:
       return 1000 % increment === 0;
     default:
-      throw new Error(`Invalid time unit: ${unit}`);
+      throw new Error(`Invalid unit of time: ${unit}`);
   }
+}
+
+export function getIncrementErrorMessage(unit, increment) {
+  let targetNum;
+
+  if (unit === TIME_UNITS.MILLISECONDS) {
+    targetNum = 1000;
+  } else {
+    targetNum = 60;
+  }
+
+  return `${increment} is an invalid rounding increment. Increments of ${unit} must be a factor of ${targetNum}.`;
 }
 
 export function floorTo(timeInMs, incrementInMs) {
