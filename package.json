@@ -19,12 +19,19 @@
   },
   "main": "index.js",
   "scripts": {
+    "build": "rimraf /dist && webpack --mode production",
     "test": "jest",
     "test-watch": "jest --watch",
     "test-coverage": "jest --coverage"
   },
   "dependencies": {},
   "devDependencies": {
-    "jest": "^25.3.0"
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "babel-loader": "^8.1.0",
+    "jest": "^25.3.0",
+    "rimraf": "^3.0.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   }
 }
