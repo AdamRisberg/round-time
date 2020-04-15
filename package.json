@@ -1,17 +1,30 @@
 {
   "name": "round-time",
   "version": "1.0.0",
-  "description": "",
+  "description": "A small library of functions for rounding minutes, seconds, and milliseconds by intervals.",
+  "keywords": [
+    "date",
+    "time",
+    "rounding",
+    "round",
+    "minute",
+    "second",
+    "millisecond"
+  ],
+  "license": "MIT",
+  "author": "Adam Risberg <myniztan@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamrisberg/round-time.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "test-watch": "jest --watch",
     "test-coverage": "jest --coverage"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "jest": "^25.3.0"
   }
 }
